@@ -47,11 +47,15 @@
 
 					<tr class="align-baseline">
 						<td>
-							@{
+							@if (cliente.Foto != null && cliente.Foto.Length > 0)
+							{
 								var base64 = Convert.ToBase64String(@cliente.Foto);
-								var imgSrc = String.Format("data:image/gif; base64, {0}", base64);
+								<img src="data:image/jpeg;base64, @base64" alt="Imagem do Cliente" class="image-size" />
 							}
-							<img src='@imgSrc' class="image-size" />
+							else
+							{
+								<span>Imagem não disponível</span>
+							}
 						</td>
 						<th scope="row">@cliente.Id</th>
 						<td>@cliente.Nome</td>
